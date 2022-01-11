@@ -10,11 +10,9 @@ import requests
 
 # signer = oci.auth.signers.get_resource_principals_signer()
 config = oci.config.from_file()
-
-# print(config)
-
 objstore = oci.object_storage.ObjectStorageClient(config)
 objstore_composite_ops = oci.object_storage.ObjectStorageClientCompositeOperations(objstore)
+object_storage_client = oci.object_storage.ObjectStorageClient(config)
 
 namespace = "idnygso6gagh"
 source_bucket ="input-bucket2"
