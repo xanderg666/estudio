@@ -1,0 +1,59 @@
+https://github.com/oracle/oracle-functions-samples
+
+
+git clone https://github.com/jGalanDS/fn.git
+
+
+cd /home/opc/fn/fnCsvBucket/
+
+--bajar
+cd fn
+
+jGalanDS
+
+git pull origin master
+
+--funciones
+
+
+fn deploy --app cejagmfunc
+
+
+fn invoke cejagmfunc oci-sch-stream-json-to-parquet-python < test.json
+
+
+************para el adw------------
+
+https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/workshop-attendee-2?p210_workshop_id=849&p210_type=3&session=112450772228816
+
+**en la consola
+
+export ORDS_BASE_URL=https://sldgxiipd6hbyw9-funcdb.adb.us-ashburn-1.oraclecloudapps.com/ords/
+export DB_PASSWORD=Welcome123456$
+
+
+curl -X PUT -u 'ADMIN:"'$DB_PASSWORD'"' -H "Content-Type: application/json" $ORDS_BASE_URL/admin/soda/latest/smart_molino01
+curl -u 'ADMIN:"'$DB_PASSWORD'"' -H "Content-Type: application/json" $ORDS_BASE_URL/admin/soda/latest/
+
+fn deploy --app cejagmfunc
+
+
+fn config function cejagmfunc fn-load-adw ords-base-url $ORDS_BASE_URL && \
+fn config function cejagmfunc fn-load-adw db-schema admin && \
+fn config function cejagmfunc fn-load-adw db-user admin
+
+fn config function cejagmfunc fn-load-adw dbpwd-cipher $DB_PASSWORD
+fn config function cejagmfunc fn-load-adw input-bucket input-bucket && \
+fn config function cejagmfunc fn-load-adw processed-bucket processed-bucket
+
+ ---repaldo
+
+fn config function cejagmfunc fn-load-adw-respaldo ords-base-url $ORDS_BASE_URL && \
+fn config function cejagmfunc fn-load-adw-respaldo db-schema admin && \
+fn config function cejagmfunc fn-load-adw-respaldo db-user admin
+
+fn config function cejagmfunc fn-load-adw-respaldo dbpwd-cipher $DB_PASSWORD
+fn config function cejagmfunc fn-load-adw-respaldo input-bucket input-bucket && \
+fn config function cejagmfunc fn-load-adw-respaldo processed-bucket processed-bucket
+
+fn invoke cejagmfunc fn-load-adw-respaldo

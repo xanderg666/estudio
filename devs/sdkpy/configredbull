@@ -1,0 +1,6 @@
+[DEFAULT]
+user=ocid1.user.oc1..aaaaaaaaysjd4mismwoloi34q5p7fvwc43rrvtzwhilrd2xalgdarwpvha2a
+fingerprint=f7:94:74:bf:61:9b:3a:4f:fd:18:b5:6e:39:89:83:c8
+tenancy=ocid1.tenancy.oc1..aaaaaaaahz6gou7deafnegfj3ehswmkqf5y43baoodm3cdli7zr5rgdy2koa
+region=us-ashburn-1
+key_file=C:\Users\jorge\PycharmProjects\oci\venv\jorgeg\sdkpy\PuttySSH_private.ppk
